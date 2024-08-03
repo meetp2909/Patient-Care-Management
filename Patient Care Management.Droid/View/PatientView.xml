@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:PatientCareManagement.Droid.ViewModel"
+             x:Class="PatientCareManagement.Droid.View.PatientView">
+    <ContentPage.BindingContext>
+        <vm:PatientViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <ListView ItemsSource="{Binding Patients}" SelectedItem="{Binding SelectedPatient}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}" Detail="{Binding DateOfBirth}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Entry Placeholder="Name" Text="{Binding SelectedPatient.Name}" />
+        <DatePicker Date="{Binding SelectedPatient.DateOfBirth}" />
+        <Entry Placeholder="Gender" Text="{Binding SelectedPatient.Gender}" />
+        <Entry Placeholder="Contact Info" Text="{Binding SelectedPatient.ContactInfo}" />
+        <Entry Placeholder="Medical History" Text="{Binding SelectedPatient.MedicalHistory}" />
+
+        <Button Text="Add Patient" Command="{Binding AddPatientCommand}" />
+        <Button Text="Update Patient" Command="{Binding UpdatePatientCommand}" />
+        <Button Text="Delete Patient" Command="{Binding DeletePatientCommand}" CommandParameter="{Binding SelectedPatient.PatientID}" />
+    </StackLayout>
+</ContentPage>
