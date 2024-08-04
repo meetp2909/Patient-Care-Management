@@ -13,14 +13,14 @@ namespace PatientCareManagement.Droid.ViewModel
         public PatientViewModel()
         {
             Patients = new ObservableCollection<Patient>();
-            // Initialize your data
+           
         }
 
         public async Task LoadPatients()
         {
-            // Load your patient data here
+           
         }
 
-        // Implement INotifyPropertyChanged and any other commands or properties
+       
     }
 }
